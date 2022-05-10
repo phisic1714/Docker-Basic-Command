@@ -1,4 +1,7 @@
 # คำสั่ง Docker 
+## คำสั่งเกี่ยวกับ images
+## คำสั่งเกี่ยวกับ volume
+## คำสั่งเกี่ยวกับ container
 - docker version = ตรวจดูเวอร์ชั่น
 - docker images = ดู Dockerimage ที่ถูกสร้าง
 - docker volume ls = ดู Volume ที่สร้างขึ้นมาทั้งหมด
