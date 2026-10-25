@@ -1,43 +1,16 @@
-# คำสั่ง Docker 
-## คำสั่งเกี่ยวกับ ทั่วไป
-- docker version = ตรวจดูเวอร์ชั่น
-- docker system df = ดูเนื้อที่ที่ Docker ใช้
-- docker exec -it = Remote ไปยัง sh shell
+# Docker
 
-## คำสั่งเกี่ยวกับ Images
-- docker build -t [ชื่อimage] = สร้าง Dockerimage
-- docker images = ดู Dockerimage ที่ถูกสร้าง
-- docker history [ชื่อimage] = ดูจำนวน Layer ของ Dockerfile
-- docker run [ชื่อimage] = Run Dockerimage
-- docker rmi [ชื่อimage] = ลบ Dockerimage
+Docker = platform ที่ให้นำ software โดยเฉพาะ web ที่พัฒนา ทำงาน หรือ รัน ไว้ภายในสิ่งที่เรียกว่า container ที่จะมีทั้ง OS และ โปรแกรมที่ใช้รัน software ที่ จุดประสงคือ การเอกเทศ software เพื่อให้ทำงานในสภาพแวดล้อมของมันไม่ยุ่งกับ server หรือคอมเครื่องหลัก
+![](/asset/Docker.png)
+ในรูปแต่ล่ะ container จะเก็บและรัน web app หรือ backend api โดยแยกจากกัน ซึ่ง container จะอยู่ภายใน Docker และ Docker จะทำงานอยู่ใน ระบบปฏิบัติการของเครื่องหลัก และโครงสร้างพพื้นฐานของ servers
 
-## คำสั่งเกี่ยวกับ Volume
-- docker volume ls = ดู Volume ที่สร้างขึ้นมาทั้งหมด
-- docker volume  Inspect = ตรวจสอบใน Volume
-- docker volume rm [ชื่อvolume] = ลบ Volume
+#### ประโยชน์
 
-## คำสั่งเกี่ยวกับ Container
-- docker ps -a = ดู Container และ Status ของ Container
-- docker rm [Container ID] = ลบ Containers
+1. รัน software web ที่พัฒนา มากกว่า 1 ที่มีเวอร์ชั่น node js ต่างกัน พร้อมกันใน server เดียว เพราะ แยกเป็น container
+2. สามารถรัน software web มากกว่า 1 โดยใช้ port เดียวกัน แต่ก็ต้องทำ reverse proxy ด้วยน่ะ
+3. สะดวกในการขยาย server (scaling) เพราะไม่ต้องไล่ดาวโหลดโปรแกรมที่รัน software สามารถใช้ docker จัดการโดยใช้ image
+4. จัดการ หรือ ติดตั้ง package ง่าย
 
-## คำสั่งเกี่ยวกับ Network
-- docker network create [ชื่อที่จะตั้ง] = สร้าง Bridge network 
-- docker network rm [ชื่อnetwork] = ลบ Bridge network
+## โครงสร้าง
 
-## คำสั่งเกี่ยวกับ Compose
-- docker-compose up -d = Run Container ด้วย docker-compose
-- docker-compose down = หยุดการทำงานของ Container
-
-# คำสั่งหลักๆใน Dockerfile
-- FROM กำหนด Base image
-- LABEL ใช้กำหนด Metadata เช่น ชื่อ Version หรือเจ้าของ Image
-- ENV กำหนด Environment variable ภายใน Container
-- RUN ใช้สำหรับติดตั้ง Packagesให้ Container
-- COPY สำหรับ Copy file และ Folder ไปยัง Container
-- ADD สำหรับ Copy file และ Folder ไปยัง Container โดยสามารถแตกไฟล์ .tar รวมทั้ง Copy file จาก Host ภายนอกได้
-- CMD สำหรับรันคำสั่งที่ต้องการขณะรัน Container
-- WORKDIR กำหนด Working directory ของ Container
-- ARG กำหนด Variable ขณะสร้าง Image
-- ENTRYPOINT สำหรับรันคำสั่งที่ต้องการขณะรัน Container
-- EXPOSE กำหนด Port ที่เปิดให้ Container อื่นติดต่อเข้ามา
-- VOLUME สร้าง Folder เก็บข้อมูลแบบถาวรให้ Container
+![alt text](/asset/image.png)
